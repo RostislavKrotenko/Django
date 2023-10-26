@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2 style="text-align: center;">Log in</h2>
+  <form method="post" action="{% url 'log_in' %}" style="display: flex; flex-direction: column; align-items: center;">
+    {% csrf_token %}
+    <label for="email" style="margin-top: 20px;">Email:</label>
+    <input type="text" name="email" id="email" style="padding: 10px; margin-bottom: 20px;"><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" style="padding: 10px; margin-bottom: 20px;"><br>
+    <input type="submit" value="Log in" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+  </form>
+{% endblock %}

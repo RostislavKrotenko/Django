@@ -1,0 +1,25 @@
+{% extends 'book/base.html' %}
+
+{% block title %}
+User Books
+{% endblock %}
+{% block content %}
+  {% if user.is_authenticated %}
+    {% if user.role == 1 %}
+      <h1>Books borrowed by User {{ user_id }}</h1>
+      {% if books %}
+        <ul>
+          {% for book in books %}
+            <li>{{ book.title }} by {{ book.author }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>This user has not borrowed any books yet.</p>
+      {% endif %}
+    {% else %}
+      <p>You do not have permission to access this page.</p>
+    {% endif %}
+  {% else %}
+    <p>Please log in to view this page.</p>
+  {% endif %}
+{% endblock %}

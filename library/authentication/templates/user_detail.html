@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 style="text-align: center; margin-top: 2rem;">User Details</h2>
+  <div style="display: flex; justify-content: center;">
+    <table class="user-info", style='text-align: center; margin-top: 2rem;'>
+      <tr>
+        <td class="user-info__label">ID</td>
+        <td class="user-info__value">{{ user.id }}</td>
+      </tr>
+      <tr>
+        <td class="user-info__label">First name</td>
+        <td class="user-info__value">{{ user.first_name }}</td>
+      </tr>
+      <tr>
+        <td class="user-info__label">Last name</td>
+        <td class="user-info__value">{{ user.last_name }}</td>
+      </tr>
+      <tr>
+        <td class="user-info__label">Middle name</td>
+        <td class="user-info__value">{{ user.middle_name }}</td>
+      </tr>
+      <tr>
+        <td class="user-info__label">Email</td>
+        <td class="user-info__value">{{ user.email }}</td>
+      </tr>
+      <tr>
+        <td class="user-info__label">Role</td>
+        <td class="user-info__value">{% if user.role == 1 %}Admin{% else %}User{% endif %}</td>
+      </tr>
+    </table>
+  </div>
+
+  <style>
+    .user-info {
+      width: 50%;
+      margin-top: 2rem;
+      border-collapse: collapse;
+      border: 1px solid #ccc;
+    }
+
+    .user-info__label {
+      text-align: center; 
+      margin-top: 2rem;
+      font-weight: bold;
+      color: #555;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .user-info__value {
+      margin: 0;
+      color: #333;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+
+{% endblock %}

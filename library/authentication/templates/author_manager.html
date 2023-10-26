@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center;">Author Manager</h1>
+    <form>
+        {% csrf_token %}
+        <button type="submit" name="author_list" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;"><a href="{% url 'author_list' %}">Author inforamtion</a></button>
+    </form>
+    <br>
+    <form>
+        {% csrf_token %}
+        <button type="submit" name="create_author" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;"><a href="{% url 'create_author' %}">Create Author</a></button>
+    </form>
+    <br>
+    <form method="POST" action="{% url 'delete_author' %}">
+        {% csrf_token %}
+        <label for="author_id">Author ID:</label>
+        <input type="text" name="author_id" id="author_id">
+        <input type="submit" value="Delete Author">
+      </form>
+    <style>
+        body {
+            background-color: #F2F2F2;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            margin: 0 auto;
+            max-width: 600px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+        }
+
+        button[type="submit"],
+        a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        label {
+            font-size: 15px;
+            margin-top: 18px;
+            margin-right: 10px;
+            }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            height: 7px;
+            border: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            margin-left: 10px;
+            padding: 10px 20px;
+            margin-top: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 5px;
+        }
+
+    </style>
+{% endblock %}

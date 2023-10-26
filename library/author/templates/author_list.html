@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Author List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Patronymic</th>
+        <th>Books</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for author in authors %}
+        <tr>
+          <td>{{ author.id }}</td>
+          <td>{{ author.name }}</td>
+          <td>{{ author.surname }}</td>
+          <td>{{ author.patronymic }}</tb>
+          <td>{{ author.books }}</tb>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <style>
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+{% endblock %}

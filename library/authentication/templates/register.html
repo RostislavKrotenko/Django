@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container my-5", style="text-align: center;">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Registration Form</h2>
+        <form method="post" class="form">
+          {% csrf_token %}
+          <div class="form-group mb-3">
+            <label for="first_name">First name:</label>
+            <input type="text" class="form-control" id="first_name" name="first_name">
+          </div>
+          <div class="form-group mb-3">
+            <label for="last_name">Last name:</label>
+            <input type="text" class="form-control" id="last_name" name="last_name">
+          </div>
+          <div class="form-group mb-3">
+            <label for="middle_name">Middle name:</label>
+            <input type="text" class="form-control" id="middle_name" name="middle_name">
+          </div>
+          <div class="form-group mb-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group mb-3">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <div class="form-group mb-3">
+            <label for="user_role">Choose user role:</label>
+            <select class="form-control" id="role" name="role">
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .btn-success {
+      background-color:  #4CAF50;
+      border-color:  #4CAF50;
+      color: white;
+      margin-top: 20px;
+      padding: 15px 20px;
+      font-size: 15px;
+      border-radius: 10px;
+    }
+  </style>
+{% endblock %}

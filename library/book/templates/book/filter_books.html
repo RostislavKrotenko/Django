@@ -1,0 +1,30 @@
+
+{% extends 'book/base.html' %}
+
+{% block content %}
+  <h1>Filter books</h1>
+  <form method="GET">
+    <label for="author">Author:</label>
+    <input type="text" name="author" id="author" value="{{ request.GET.author }}">
+    <br>
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" value="{{ request.GET.title }}">
+    <br>
+    <button type="submit">Filter</button>
+  </form>
+
+  {% if books %}
+    <h2>Books:</h2>
+    <ul>
+    {% for book in books %}
+      <li>{{ book.name }} by {{ book.description }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% for message in messages %}
+    <div class="alert alert-warning" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endblock %}

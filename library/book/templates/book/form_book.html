@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Book
+{% endblock title %}
+
+{% block content %}
+    <div class="col-lg-4 offset-lg-4 content-block" style="text-align: center">
+        {% if book %}
+            <h1 style="text-align: center;">Edit book</h1>
+        {% else %}
+            <h1 style="text-align: center;">Add book</h1>
+        {% endif %}
+        <form method="post" id="form1" class="form-horizontal">
+            {% csrf_token %}
+            <label>{{ form.name.label_tag }}</label>
+            <br>
+            <input value="{{ book.name }}" type="text" name="book_name"><br>
+
+            <label>{{ form.description.label_tag }}</label>
+            <br>
+            <input type="text" value="{{ book.description }}" name="description"><br>
+
+            <label>{{ form.count.label_tag }}</label>
+            <br>
+            <input type="number" value='{{ book.count }}' name="count"><br>
+
+            <label>{{ form.author.label_tag }} </label><br>
+            <select class="form-control" size="4" name="author" multiple>
+                {% for author in authors %}
+                    <option value="{{ author.id }}">{{ author.name }}</option>
+                {% endfor %}
+            </select><br>
+
+
+            <label>{{ form.date_of_issue.label_tag }}</label>
+            <br>
+            <input value="{{ book.date_of_issue }}" type="date" name="date_of_issue"><br>
+
+            <label>{{ form.year_of_publication.label_tag }}</label>
+            <br>
+            <input  value="{{ book.year_of_publication }}" type="date" name="year_of_publication"><br>
+
+
+
+            <br>
+            <button style="background-color: #4CAF50;" class="btn btn-primary" type="submit" value="Submit">Submit</button>
+            <button type="reset" class="btn btn-secondary col-3 offset-1">Clear</button>
+        </form>
+    </div>
+{% endblock content %}

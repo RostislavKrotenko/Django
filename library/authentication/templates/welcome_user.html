@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Welcome
+{% endblock %}
+
+{% block content %}
+
+<div class="content" style="text-align: center;">
+    <h1>Welcome!</h1>
+    <p>Ласкаво просимо на домашню сторінку, {{ user.first_name }}</p>
+    <form method="post" action="{% url 'log_out' %}">
+        {% csrf_token %}
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;">Log out</button>
+    </form>
+</form>
+<br>
+<form method="post" action="{% url 'order_manager' %}">
+    {% csrf_token %}
+    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;">Order manager</button>
+</form>
+<br>
+<form method="post" action="{% url 'book_manager'%}">
+    {% csrf_token %}
+    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;">Book manager</button>
+</form>
+<style>
+    body {
+        background-color: #F2F2F2;
+        font-family: Arial, sans-serif;
+    }
+    .content {
+        margin: 0 auto;
+        max-width: 600px;
+        margin-top: 50px;
+    }
+    h1 {
+        color: #4CAF50;
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    form {
+        display: flex;
+        justify-content: center;
+    }
+    button[type="submit"], a {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+</style>
+{% endblock %}

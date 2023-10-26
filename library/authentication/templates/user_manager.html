@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center;">User Manager</h1>
+    <form method="post" action="{% url 'user_list' %}">
+        {% csrf_token %}
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;">Show information</button>
+    </form>
+    <br>
+    <form method="post" action="{% url 'user_detail' %}" style="display: flex; justify-content: center; margin-top: 50px;">
+        {% csrf_token %}
+        <label for="user_id" style="font-weight: bold; font-size: 25px; margin-right: 10px;">Enter User ID:</label>
+        <input type="text" id="user_id" name="user_id" style="padding: 5px; border-radius: 5px; border: none; box-shadow: 0px 0px 5px #888888;">
+        <button type="submit" style="background-color: #4CAF50; color: white; padding: 5px 15px; border: none; cursor: pointer; margin-left: 10px;">User details</button>
+    <style>
+        body {
+            background-color: #F2F2F2;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            margin: 0 auto;
+            max-width: 600px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+        }
+
+        button[type="submit"],
+        a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+    </style>
+{% endblock %}

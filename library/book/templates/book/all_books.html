@@ -1,0 +1,80 @@
+{% extends 'book/base.html' %}
+
+{% block title %}
+    Books List
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">Book list</h1>
+    <div class="col-lg-8 offset-lg-2 content-block">
+        <div class="row">
+            <form class="col-6" method="post">
+                {% csrf_token %}
+                <input class="form-control" type="search" name="search_by_name" placeholder="Search by book name" value>
+            </form>
+            <div class="col-6">
+                 <form class="row" method="post">
+                    {% csrf_token %}
+                     <div class="col-8">
+                         <select class="form-select" name="filter_by_authors" id="">
+                            <option value="">All authors</option>
+                            {% for author in authors %}
+                                <option value="{{ author.id }}">{{ author.name }}</option>
+                            {% endfor %}
+                        </select>
+                     </div>
+                     <div class="col-4">
+                         <input style="background-color: #4CAF50;" class="btn btn-primary" type="submit" value="Find">
+                     </div>
+                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 offset-lg-2 content-block">
+        <div class="table-responsive">
+            <table class="table table-hover" id="userTable">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Authors</th>
+                    <th scope="col">
+                        <a href="{% url 'book:add' %}">
+                            <button style="background-color: #4CAF50;" type="button" class="btn btn-primary">Add book</button>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ book.name }}</td>
+                    <td>{{ book.description|truncatewords:10 }}</td>
+                    <td>{{ book.count }}</td>
+                    <td>
+                    {% if book.authors.all %}
+                        {% for author in book.authors.all %}
+                            {{ author.name }},
+                        {% endfor %}
+                    {% else %}
+                        ---
+                    {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'book:edit' book.id %}">
+                            <button type="button" class="btn btn-info bi bi-pencil-square"> Edit </button>
+                        </a>
+                        <a href="{% url 'book:delete' book.id %}">
+                            <button type="button" class="btn btn-danger bi bi-trash3"> Delete </button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

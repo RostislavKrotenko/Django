@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center;">Book Manager</h1>
+    <form>
+        {% csrf_token %}
+        <button type="submit" name="book_list" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;"><a href="{% url 'all_books' %}">Books inforamtion</a></button>
+        <button type="submit" name="add" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;"><a href="{% url 'book:add' %}">Add book</a></button>
+
+    </form>
+    <br>
+    <form method="POST" action="{% url 'book_detail' %}">
+        {% csrf_token %}
+        <label for="book_id">Book ID:</label>
+        <input type="text" name="book_id" id="book_id">
+        <input type="submit" value="Book detail">
+      </form>
+      <form method="POST" action="{% url 'user_books' %}">
+        {% csrf_token %}
+        <label for="user_id">User ID:</label>
+        <input type="text" name="user_id" id="user_id">
+        <input type="submit" value="Look at my books">
+      </form>
+    <style>
+        body {
+            background-color: #F2F2F2;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            margin: 0 auto;
+            max-width: 600px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+        }
+
+        button[type="submit"],
+        a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        label {
+            font-size: 15px;
+            margin-top: 18px;
+            margin-right: 10px;
+            }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            height: 7px;
+            border: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            margin-left: 10px;
+            padding: 10px 20px;
+            margin-top: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 5px;
+        }
+
+    </style>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>My Orders</h1>
+  <ul>
+    {% for order in user_orders %}
+      <li>{{ order.book.title }} - {{ order.created_at }}</li>
+    {% empty %}
+      <li>You haven't placed any orders yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
